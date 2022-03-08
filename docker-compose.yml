@@ -1,0 +1,22 @@
+version: "3.9"
+
+services:
+  vault:
+    image: vault:1.9.4
+    cap_add:
+      - IPC_LOCK
+    volumes:
+      - type: volume
+        source: vault-data
+        target: /vault/file
+      - type: bind
+        source: ./server.hcl
+        target: /vault/config/server.hcl
+    ports:
+      - "8200:8200"
+    command: server
+
+volumes:
+  vault-data:
+    external:
+      name: vault-data
