@@ -11,5 +11,6 @@ ui = true
 
 listener "tcp" {
     address = "0.0.0.0:8200"
-    tls_disable = "true"
+    tls_cert_file = "/vault/config/server.crt"
+    tls_key_file = "/vault/config/private-key.pem"
 }

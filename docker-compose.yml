@@ -12,6 +12,12 @@ services:
       - type: bind
         source: ./server.hcl
         target: /vault/config/server.hcl
+      - type: bind
+        source: ./generated/private-key.pem
+        target: /vault/config/private-key.pem
+      - type: bind
+        source: ./generated/server.crt
+        target: /vault/config/server.crt
     ports:
       - "8200:8200"
     command: server
